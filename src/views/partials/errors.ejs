@@ -1,0 +1,8 @@
+<% if (errors) { %>
+    <% errors.forEach(element => { %>
+        <div class="alert alert-danger alert-dismissible fade show mx-5" role="alert">
+            <%- element %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <% }) %>
+            <% } %>

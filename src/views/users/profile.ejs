@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header text-center">Your profile</div>
+        <div class="card-body">
+            <div class="card-title">
+                <h1>Welcome "
+                    <%= user.name %> "
+                </h1>
+            </div>
+            <div class="card-text">
+                Now you can access to the whole applications we have, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus maxime omnis adipisci nulla nihil ratione sunt fugit optio dicta, corrupti quis amet incidunt atque placeat.
+            </div>
+            <div class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore ut, amet optio architecto nisi officia vel perferendis incidunt enim ea dignissimos, velit fugiat odit autem!</div>
+        </div>
+
+        <div class="card-footer">
+            <form action="/users/logout?_method=DELETE" method="post">
+                <button type="submit" class="btn btn-primary">Logout</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="card my-5">
+        <div class="card-header">Fill Up the Fields</div>
+        <div class="card-body">
+            <div class="card-title">
+                <h1>Update My Data</h1>
+            </div>
+            <div>
+                <form action="/users/update/<%= user.id %>?_method=PUT" method="post">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input value="<%= user.name %>" required autofocus name="name" id="name" type="text" class="form-control" id="exampleInputEmail1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input required value="<%= user.email %>" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">
+                            <div class="d-flex gap-2 align-items-center ">
+                                <i class="far fa-question-circle m"></i>
+                                <p class="m-0 p-0">You can update any attribute</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-title">
+                        <h3>We need to check it's you</h3>
+                    </div>
+                    <div class="mb-3">
+                        <label for="c_password" class="form-label">Confirm password</label>
+                        <input required name="confirm_password" type="password" class="form-control" id="c_password" aria-describedby="emailHelp">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

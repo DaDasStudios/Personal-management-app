@@ -1,0 +1,46 @@
+body {
+    background-color: lightblue;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+}
+
+.text-o-background {
+    color: white;
+    transition: color 1s;
+}
+
+.disabled-color:hover {
+    color: cornflowerblue;
+}
+
+.app-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem
+}
+
+.app-grid.app-grid-col-3 {
+    grid-template-columns: 1fr 1fr 1fr
+}
+
+.fs-button {
+    font-size: 4em;
+}
+
+.t-green {
+    color: #257425
+}
+
+.center-small-a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}

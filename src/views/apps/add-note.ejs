@@ -1,0 +1,23 @@
+<div class="container mb-5">
+    <div class="card-group">
+        <div class="card">
+            <div class="card-header">Fill up the fields</div>
+            <div class="card-body">
+                <h4 class="card-title">Add a New Note</h4>
+                <form action="/apps/notes/add" method="post">
+                    <form>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Title</label>
+                            <input required name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <input required name="description" type="text" class="form-control" id="description" aria-describedby="emailHelp">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

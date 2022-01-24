@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": "1642871634040",
+      "name": "Carlos",
+      "email": "carl@gmail.com",
+      "password": "$2a$10$74YIcehP8JdqBhPL2B7iWuUykyc5b7L.0pboKUJJ1409PHZ2X57dq"
+    },
+    {
+      "id": "1642947719187",
+      "name": "Whetstone The Lightest",
+      "email": "w@w",
+      "password": "$2a$10$rVayGVX0lv4U9l8HeX5NEukPNGAfY7CtD8PD60Jf6hmwNLh0BKl9O"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head.ejs') %>
+        <title>
+            <%= title %>
+        </title>
+</head>
+
+<body>
+
+    <%- include('../partials/navigation.ejs') %>
+        <%- include('../partials/errors.ejs') %>
+            <%- include('../partials/messages.ejs') %>
+                <%- body %>
+                    <%- include('../partials/footer.ejs') %>
+</body>
+
+</html>
