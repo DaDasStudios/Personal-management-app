@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="card my-5">
+        <div class="card-body">
+            <h2 class="card-title text-center">Let's Play</h2>
+            <hr>
+            <div class="app-grid">
+                <a href="/apps/trivia/informatic/1/none" class="btn btn-primary">Informatic</a>
+                <a href="/apps/trivia/spanish/1/none" class="btn btn-primary">Spanish</a>
+                <a href="/apps/trivia/history/1/none" class="btn btn-primary">History</a>
+                <a href="/apps/trivia/biology/1/none" class="btn btn-primary">Biology</a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Score</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for( let index = 0; index < allScores.length; index++ ) { %>
+                        <% if (index === userIndex) { %>
+                            <tr class="table-info">
+                                <% } else { %>
+                                    <tr class="table-secondary">
+                                        <% } %>
+                                            <th scope="row">
+                                                <%= allScores[index].score %>
+                                            </th>
+                                            <td>
+                                                <%= allScores[index].name  %>
+                                            </td>
+                                            <td>
+                                                <%= allScores[index].category  %>
+                                            </td>
+                                            <td>
+                                                <%= allScores[index].time  %>
+                                            </td>
+                                    </tr>
+                                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

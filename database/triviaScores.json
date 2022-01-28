@@ -1,0 +1,44 @@
+[
+  {
+    "id": "1642947719187",
+    "name": "Whetstone The Darkest",
+    "score": 1000,
+    "category": "Informatic",
+    "time": "4.25 Seconds"
+  },
+  {
+    "id": "1643290840758",
+    "name": "Camilo Bernal Morales",
+    "score": 1000,
+    "category": "Informatic",
+    "time": "9.18 Seconds"
+  },
+  {
+    "id": "1643336644098",
+    "name": "Electrominion",
+    "score": 1000,
+    "category": "Spanish",
+    "time": "32.89 Seconds"
+  },
+  {
+    "id": "42543",
+    "name": "Linda",
+    "score": 870,
+    "category": "Biology",
+    "time": "2.5 Seconds"
+  },
+  {
+    "id": "56475",
+    "name": "Brian",
+    "score": 190,
+    "category": "Informatic",
+    "time": "15.98 Seconds"
+  },
+  {
+    "id": "1432",
+    "name": "Ryan",
+    "score": 150,
+    "category": "Spanish",
+    "time": "9.4 Seconds"
+  }
+]

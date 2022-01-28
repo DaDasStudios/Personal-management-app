@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">Question #
+            <%= next-1 %>
+        </div>
+
+        <div class="card-body">
+            <h3 class="card-title text-center">
+                <%= question %>
+            </h3>
+            <div class="app-grid">
+                <% for( let index = 0; index < options.length; index++ ) { %>
+                    <a href="/apps/trivia/<%= theme%>/<%= next %>/<%= index+1 %>" class="btn btn-outline-success">
+                        <%= options[index] %>
+                    </a>
+                    <% } %>
+            </div>
+        </div>
+    </div>
+
+</div>

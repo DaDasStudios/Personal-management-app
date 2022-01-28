@@ -6,12 +6,10 @@ const handler = {
         let file = fs.readFileSync(path)
         return JSON.parse(file)
     },
-    write: (path, data) => {
-        let buffer = JSON.stringify(data, null, 2)
-        fs.writeFile(path, buffer, err => {
-            if (err) throw err;
-            else return true
-        })
+    write: async(path, data) => {
+        let buffer = await JSON.stringify(data, null, 2)
+        fs.writeFileSync(path, buffer)
+        return true
     },
     findByKey: (db, key, value) => {
         for (let element = 0; element < db.length; element++) {

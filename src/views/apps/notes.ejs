@@ -15,7 +15,7 @@
                                 <%= element.description %>
                             </p>
                             <div>
-                                <form action="/apps/notes/delete/<%= element.id %>?_method=DELETE" method="post">
+                                <form action="/apps/notes/delete/<%= element.id %>/?_method=DELETE" method="post">
                                     <button class="d-flex gap-2 align-items-center btn btn-danger" type="submit">
                                         <i class="fas fa-trash-alt"></i>
                                         <p class="m-0 p-0">Delete</p>

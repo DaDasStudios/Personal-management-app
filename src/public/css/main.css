@@ -19,6 +19,7 @@ a {
 .app-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    align-items: flex-start;
     gap: 1rem
 }
 
@@ -43,4 +44,41 @@ a {
     top: 0;
     right: 0;
     bottom: 0;
+}
+
+
+/* * CAROUSEL IMAGES */
+
+.card {
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.carousel-custom {
+    height: 500px;
+    background-size: cover;
+}
+
+.carousel-img1-custom {
+    background-image: url('../img/notes.jpg');
+}
+
+.carousel-img2-custom {
+    background-image: url('../img/books.jpg');
+}
+
+.carousel-img3-custom {
+    background-image: url('../img/trivia.jpg');
+}
+
+@media (max-width: 800px) {
+    .app-grid.app-grid-col-3 {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+/** Escentials */
+
+.main-title {
+    font-size: 4em;
 }

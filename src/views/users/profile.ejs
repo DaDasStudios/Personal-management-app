@@ -14,7 +14,7 @@
         </div>
 
         <div class="card-footer">
-            <form action="/users/logout?_method=DELETE" method="post">
+            <form action="/users/logout/?_method=DELETE" method="post">
                 <button type="submit" class="btn btn-primary">Logout</button>
             </form>
         </div>
@@ -27,7 +27,7 @@
                 <h1>Update My Data</h1>
             </div>
             <div>
-                <form action="/users/update/<%= user.id %>?_method=PUT" method="post">
+                <form action="/users/update/<%= user.id %>/?_method=PUT" method="post">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
                         <input value="<%= user.name %>" required autofocus name="name" id="name" type="text" class="form-control" id="exampleInputEmail1">
@@ -48,6 +48,12 @@
                     <div class="mb-3">
                         <label for="c_password" class="form-label">Confirm password</label>
                         <input required name="confirm_password" type="password" class="form-control" id="c_password" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">
+                            <div class="d-flex gap-2 align-items-center ">
+                                <i class="far fa-question-circle m"></i>
+                                <p class="m-0 p-0">The changes will be updated once you logout</p>
+                            </div>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

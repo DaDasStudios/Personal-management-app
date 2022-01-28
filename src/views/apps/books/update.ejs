@@ -1,0 +1,26 @@
+<div class="container">
+    <form action="/apps/books/update/<%=book.id%>/?_method=PUT" method="post">
+        <div class="card">
+            <div class="card-header">Update Book</div>
+            <div class="card-body d-flex gap-1 flex-column">
+                <label for="title">Title</label>
+                <input value="<%=book.title%>" autocomplete="off" type="text" class="form-control" id="title" name="title" required autofocus>
+                <label for="author">Author</label>
+                <input value="<%=book.author%>" autocomplete="off" type="text" class="form-control" id="author" name="author" required>
+                <label for="image">Image</label>
+                <input value="<%=book.image%>" autocomplete="off" type="url" class="form-control" id="image" name="image" required>
+                <div id="emailHelp" class="form-text">
+                    <div class="d- flex gap-2 align-items-center ">
+                        <i class="far fa-question-circle m"></i>
+                        <p class="m-0 p-0">Paste here the url of your image</p>
+                    </div>
+                </div>
+                <label for="description">Description</label>
+                <textarea class="form-control" name="description" id="description" rows="10" required><%=book.description%></textarea>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-center">
+                <input class="btn btn-primary" type="submit" value="Update Book">
+            </div>
+        </div>
+    </form>
+</div>

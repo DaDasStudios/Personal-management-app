@@ -4,15 +4,15 @@ const path = require('path')
 const db = require('../database');
 const helper = require('../helpers/getLast');
 const passport = require('passport')
-const { checkAuthenticated, checkNotAuthenticated } = require('../helpers/authentication')
+const { checkAuthenticated } = require('../helpers/authentication')
 
 // * Register
 
-router.get('/users/signup', checkNotAuthenticated, (req, res) => {
+router.get('/users/signup', (req, res) => {
     res.render('users/signup.ejs', { title: 'Sign Up' })
 })
 
-router.post('/users/signup', checkNotAuthenticated, async(req, res) => {
+router.post('/users/signup', async(req, res) => {
     // ? Save the user into the database
     const lastData = await helper.readBefore('../../database/users.json')
 
@@ -41,7 +41,8 @@ router.post('/users/signup', checkNotAuthenticated, async(req, res) => {
             password: await db.encodePassword(req.body.password)
         }
         lastData.users.push(user)
-        db.write(path.join(__dirname, '../../database/users.json'), lastData)
+
+        await db.write(path.join(__dirname, '../../database/users.json'), lastData)
         req.flash('success', 'You are registered now!')
         res.redirect('/users/signin')
     }
@@ -49,18 +50,32 @@ router.post('/users/signup', checkNotAuthenticated, async(req, res) => {
 
 // * Login
 
-router.get('/users/signin', checkNotAuthenticated, (req, res) => {
+router.get('/users/signin', (req, res) => {
     res.render('users/signin.ejs', { title: 'Sign In' })
 })
 
 // ? Search in database the user and authenticate it with passport-local strategy
-router.post('/users/signin', checkNotAuthenticated, passport.authenticate('local', {
-    successRedirect: '/users/',
+router.post('/users/signin', passport.authenticate('local', {
+    successRedirect: '/users/init-session',
     failureRedirect: '/users/signin',
     failureFlash: true
 }))
 
-router.delete('/users/logout', (req, res) => {
+router.get('/users/init-session', async(req, res) => {
+    // * Once in route "users" we open all the database that we'd need
+    req.session.users = await helper.readBefore('../../database/users.json')
+    req.session.notes = await helper.readBefore('../../database/notes.json')
+    req.session.triviaScores = await helper.readBefore('../../database/triviaScores.json')
+    req.session.books = await helper.readBefore('../../database/books.json')
+    res.redirect('/users/')
+})
+
+router.delete('/users/logout', async(req, res) => {
+    // When user logOut, we write the changes over the db, this is because when db is wrote the session somehow gets logged out, so to avoid that we're gonna do that
+    //console.log('Saving user data')
+    // db.write(path.join(__dirname, '../../database/users.json'), req.session.users)
+    // db.write(path.join(__dirname, '../../database/notes.json'), req.session.notes)
+    // db.write(path.join(__dirname, '../../database/triviaScores.json'), req.session.triviaScores)
     req.logOut()
     res.redirect('/')
 })
@@ -69,11 +84,13 @@ router.delete('/users/logout', (req, res) => {
 
 router.get('/users/', checkAuthenticated, (req, res) => {
     //console.log(req.isAuthenticated())
+
+    //console.log(req.session.users)
     res.render('users/profile.ejs', { title: 'Profile' })
 })
 
 router.put('/users/update/:id', async(req, res) => {
-    const lastData = await helper.readBefore('../../database/users.json')
+    var lastData = req.session.users
     let id = req.params.id
 
     // Get data
@@ -83,14 +100,14 @@ router.put('/users/update/:id', async(req, res) => {
     const indexOfId = db.indexOfId(lastData.users, id)
 
     // Some validations
-    const errors = []
     if (!await db.comparePassword(confirm_password, lastData.users[indexOfId].password)) {
         req.flash('error', 'Incorrect password')
     } else {
         // Write changes on db
         lastData.users[indexOfId].name = name
         lastData.users[indexOfId].email = email
-        req.flash('success', 'Data updated successfully! Please, Sign In Again')
+        req.flash('success', 'Data updated successfully!')
+        req.session.users = lastData
         db.write(path.join(__dirname, '../../database/users.json'), lastData)
     }
 

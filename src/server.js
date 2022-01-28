@@ -11,8 +11,8 @@ const db = require('./database');
 const app = express()
 
 // ? Passport configuration
-const initPassport = require('./config/passport');
-initPassport(passport)
+require('./config/passport');
+
 
 // Configurations
 require('dotenv').config({ path: path.join(__dirname, '../.env') })
@@ -42,6 +42,7 @@ app.use((req, res, next) => {
     app.locals.error = req.flash('error')
     app.locals.errors = undefined
     app.locals.user = req.user || null
+    app.locals.triviaThemes = req.triviaThemes || null
     next()
 })
 
