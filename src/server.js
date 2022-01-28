@@ -28,7 +28,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(session({
     resave: true,
-    secret: process.env.SECRET,
+    secret: 'secret',
     saveUninitialized: true
 }))
 
